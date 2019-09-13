@@ -1,8 +1,9 @@
 #include "ESP8266.h"
+#include <ESP8266WiFi.h>
 #include <SoftwareSerial.h>
 
-#define SSID "aterm-9cfae4-g"
-#define PASSWORD "7ee8bf365a669"
+#define SSID "SPWN_N34_5f1166"  //"aterm-9cfae4-g"
+#define PASSWORD "10b1a28af519c"  //"7ee8bf365a669"
 #define HOST_NAME "192.168.10.103"
 #define HOST_PORT 7777
 
@@ -12,6 +13,7 @@ SoftwareSerial mySerial(2, 4);  //RX, TX
 ESP8266 wifi(mySerial);
 
 int val = 0;
+uint8_t mux_id = 0;
 
 void setup(void)
 {
@@ -40,17 +42,18 @@ void setup(void)
     Serial.print("register udp err\r\n");
   }
 
-  Serial.println(wifi.getIPStatus());
+  Serial.println(wifi.getLocalIP().c_str());
 }
 
 void loop() {
 //  Serial.println(wifi.getIPStatus());
   uint8_t buffer[1024] = {0};
-  uint32_t len = wifi.recv(buffer, sizeof(buffer), 10000);
+  uint32_t len = wifi.recv(mux_id, buffer, sizeof(buffer), 10000);
   if (len > 0) {
     Serial.println("received");
     for (uint32_t i=0; i<len; i++) {
       Serial.println((char)buffer[i]);
     }
   }
+  mux_id++;
 }

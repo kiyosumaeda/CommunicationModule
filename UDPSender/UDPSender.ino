@@ -1,9 +1,9 @@
 #include "ESP8266.h"
 #include <SoftwareSerial.h>
 
-#define SSID "aterm-9cfae4-g"
-#define PASSWORD "7ee8bf365a669"
-#define HOST_NAME "192.168.10.103"
+#define SSID "SPWN_N34_5f1166"  //"aterm-9cfae4-g"
+#define PASSWORD "10b1a28af519c"  //"7ee8bf365a669"
+#define HOST_NAME "192.168.179.4"
 #define HOST_PORT 7777
 
 int n = 0;
