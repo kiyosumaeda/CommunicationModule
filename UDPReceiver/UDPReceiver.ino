@@ -1,5 +1,5 @@
 #include "ESP8266.h"
-#include <ESP8266WiFi.h>
+#include "ESP8266WiFi.h"
 #include <SoftwareSerial.h>
 
 #define SSID "SPWN_N34_5f1166"  //"aterm-9cfae4-g"
@@ -7,7 +7,11 @@
 #define HOST_NAME "192.168.10.103"
 #define HOST_PORT 7777
 
+//IPAddress ip(192, 168, 77, 77);
+
 int n = 0;
+
+//int status WL_IDLE_STATUS;
 
 SoftwareSerial mySerial(2, 4);  //RX, TX
 ESP8266 wifi(mySerial);
@@ -42,7 +46,17 @@ void setup(void)
     Serial.print("register udp err\r\n");
   }
 
-  Serial.println(wifi.getLocalIP().c_str());
+//  if (WiFi.status() == WL_NO_SHIELD) {
+//    while(true);
+//  }
+
+//  WiFi.config(ip);
+//
+//  while(status != WL_CONNECTED) {
+//    status = WiFi.begin(SSID, PASSWORD);
+//  }
+//
+//  Serial.println(WiFi.localIP());
 }
 
 void loop() {
