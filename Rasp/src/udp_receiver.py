@@ -10,4 +10,4 @@ with closing(sock):
 	while True:
 		data, addr = sock.recvfrom(1024)
 		print("bytes: ", data)
-		print(str(struct.unpack('>d', data[0])))
+		print(str(struct.unpack('>d', data)[0]))
