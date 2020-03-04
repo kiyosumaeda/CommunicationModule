@@ -3,15 +3,15 @@ import time
 from socket import *
 
 class ServerThread(threading.Thread):
-    def __init__(self, PORT=7777):
+    def __init__(self, port):
         threading.Thread.__init__(self)
         self.data = 'hoge'
         self.kill_flag = False
         # line information
         self.HOST = gethostname()
-        self.PORT = PORT
+        self.port = port
         self.BUFSIZE = 1024
-        self.ADDR = (gethostbyname(self.HOST), self.PORT)
+        self.ADDR = (gethostbyname(self.HOST), self.port)
         # bind
         self.udpServSock = socket(AF_INET, SOCK_DGRAM)
         self.udpServSock.bind(self.ADDR) # HOST, PORTでbinding
